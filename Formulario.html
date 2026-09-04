@@ -1,0 +1,264 @@
+<html>
+    <head>formulario</head>
+    <body>
+
+        <!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compra de Jogos - Game Review Pro</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0f0f0f;
+    color:white;
+    text-align:center;
+}
+
+h1{
+    color:#9b59ff;
+    text-shadow:0 0 15px #9b59ff;
+    margin-top:35px;
+}
+
+.container{
+    width:650px;
+    max-width:95%;
+    margin:30px auto;
+    background:#1a1a1a;
+    border:2px solid #9b59ff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 0 25px #9b59ff55;
+}
+
+h2{
+    color:#b57cff;
+    border-bottom:1px solid #9b59ff;
+    padding-bottom:8px;
+    margin-top:30px;
+}
+
+label{
+    display:block;
+    text-align:left;
+    margin-top:18px;
+    margin-bottom:8px;
+    color:#d7b8ff;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#2b2b2b;
+    color:white;
+    font-size:15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:none;
+    box-shadow:0 0 12px #9b59ff;
+}
+
+textarea{
+    resize:none;
+    height:120px;
+}
+
+button{
+
+    margin-top:30px;
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#9b59ff;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+
+    background:#b57cff;
+    box-shadow:0 0 20px #9b59ff;
+    transform:scale(1.02);
+}
+
+.voltar{
+
+    display:inline-block;
+    margin-top:25px;
+    color:#9b59ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.voltar:hover{
+    color:white;
+}
+
+footer{
+    margin-top:35px;
+    color:#9b59ff;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎮 GAME REVIEW PRO 🎮</h1>
+
+<div class="container">
+
+<form>
+
+<h2>👤 Dados do Comprador</h2>
+
+<label>Nome Completo</label>
+<input type="text" placeholder="Digite seu nome completo" required>
+
+<label>Sexo</label>
+<select required>
+    <option value="">Selecione</option>
+    <option>Masculino</option>
+    <option>Feminino</option>
+    <option>Prefiro não informar</option>
+</select>
+
+<label>Idade</label>
+<input type="number" min="0" max="120" placeholder="Digite sua idade" required>
+
+<label>CPF</label>
+<input
+    type="text"
+    placeholder="000.000.000-00"
+    maxlength="14"
+    required>
+
+<label>Telefone</label>
+<input
+    type="tel"
+    placeholder="(00) 00000-0000"
+    required>
+
+<label>E-mail</label>
+<input
+    type="email"
+    placeholder="email@exemplo.com"
+    required>
+
+<label>Endereço</label>
+<input
+    type="text"
+    placeholder="Rua, número e bairro"
+    required>
+
+<label>Cidade</label>
+<input type="text" required>
+
+<label>Estado</label>
+<input type="text" required>
+
+<label>CEP</label>
+<input
+    type="text"
+    placeholder="00000-000"
+    required>
+
+<h2>🎮 Dados da Compra</h2>
+
+<label>Escolha o jogo</label>
+
+<select required>
+    <option>Dying Light</option>
+    <option>Free Fire</option>
+    <option>League of Legends</option>
+    <option>The Last of Us</option>
+    <option>Minecraft</option>
+    <option>Crash Bandicoot</option>
+    <option>Clash Royale</option>
+    <option>Among Us</option>
+</select>
+
+<label>Plataforma</label>
+
+<select required>
+    <option>PC</option>
+    <option>PlayStation 5</option>
+    <option>PlayStation 4</option>
+    <option>Xbox Series X/S</option>
+    <option>Xbox One</option>
+    <option>Nintendo Switch</option>
+    <option>Android</option>
+    <option>iOS</option>
+</select>
+
+<label>Quantidade</label>
+<input type="number" value="1" min="1" required>
+
+<label>Forma de Pagamento</label>
+
+<select required>
+    <option>Cartão de Crédito</option>
+    <option>Cartão de Débito</option>
+    <option>Pix</option>
+    <option>Boleto Bancário</option>
+</select>
+
+<label>Observações</label>
+
+<textarea placeholder="Digite alguma observação sobre sua compra (opcional)"></textarea>
+
+<button type="submit">
+🛒 Finalizar Compra
+</button>
+
+</form>
+
+<div style="margin:25px;">
+    <a href="avaliaçãodjgs.html">
+        <button class="espetacular">
+            Voltar a página inicial
+        </button>
+    </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+        
