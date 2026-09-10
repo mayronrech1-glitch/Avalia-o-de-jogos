@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Review Pro</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f0f0f;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    color: #9b59ff;
+    text-shadow: 0 0 15px #9b59ff;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game {
+    background-color: #1a1a1a;
+    padding: 20px;
+    margin: 20px;
+    width: 320px;
+    border-radius: 15px;
+    border: 2px solid #9b59ff;
+    box-shadow: 0 0 20px #9b59ff33;
+    transition: 0.3s;
+}
+
+.game:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #9b59ff;
+}
+
+.game img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.espetacular { background-color: #00ff88; color: black; }
+.boa { background-color: #3498db; }
+.ruim { background-color: #ff4444; }
+
+textarea {
+    width: 90%;
+    height: 60px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+}
+
+.comentarios {
+    margin-top: 10px;
+    text-align: left;
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.comentario-positivo { color: #00ff88; }
+.comentario-negativo { color: #ff4444; }
+
+.estrelas {
+    font-size: 20px;
+    color: gold;
+}
+</style>
+
+<script>
+function votar(jogo, valor) {
+    let total = parseInt(document.getElementById(jogo + "-total").value);
+    let votos = parseInt(document.getElementById(jogo + "-votos").value);
+
+    total += valor;
+    votos += 1;
+
+    document.getElementById(jogo + "-total").value = total;
+    document.getElementById(jogo + "-votos").value = votos;
+
+    let media = (total / votos).toFixed(1);
+    document.getElementById(jogo + "-media").innerText = "⭐ " + media;
+}
+
+function comentar(jogo) {
+    let texto = document.getElementById(jogo + "-texto").value;
+    let tipo = document.getElementById(jogo + "-tipo").value;
+    let area = document.getElementById(jogo + "-comentarios");
+
+    if (texto.trim() === "") return;
+
+    let p = document.createElement("p");
+
+    if (tipo === "positivo") {
+        p.classList.add("comentario-positivo");
+        p.innerText = "👍 " + texto;
+    } else {
+        p.classList.add("comentario-negativo");
+        p.innerText = "👎 " + texto;
+    }
+
+    area.appendChild(p);
+    document.getElementById(jogo + "-texto").value = "";
+}
+</script>
+
+</head>
+<body>
+
+<h1>🎮 GAME REVIEW PRO 🎮</h1>
+
+<div class="container">
+
+<!-- Dying Light -->
+
+<a href="dyinglight.html">
+  
+</a>
+
+<div class="game">
+<h2>Dying Light</h2>
+<img src="https://upload.wikimedia.org/wikipedia/pt/thumb/4/4c/Dying_Light_jogo_capa.jpg/330px-Dying_Light_jogo_capa.jpg">
+<button class="espetacular" onclick="votar('dl',5)">⭐⭐⭐⭐⭐ Espetacular</button>
+<button class="boa" onclick="votar('dl',3)">⭐⭐⭐ Boa</button>
+<button class="ruim" onclick="votar('dl',1)">⭐ Ruim</button>
+<div class="estrelas" id="dl-media">⭐ 0</div>
+<input type="hidden" id="dl-total" value="0">
+<input type="hidden" id="dl-votos" value="0">
+<textarea id="dl-texto" placeholder="Escreva seu comentário..."></textarea><br>
+<select id="dl-tipo">
+<option value="positivo">👍 Positivo</option>
+<option value="negativo">👎 Negativo</option>
+</select>
+<button onclick="comentar('dl')">Enviar</button>
+<div class="comentarios" id="dl-comentarios"></div>
+</div>
+
+<!-- Free Fire -->
+<div class="game">
+<h2>Free Fire</h2>
+<img src="https://cdn12.idcgames.com/storage/image/1258/free-new-logo/default.jpg">
+<button class="espetacular" onclick="votar('ff',5)">⭐⭐⭐⭐⭐ Espetacular</button>
+<button class="boa" onclick="votar('ff',3)">⭐⭐⭐ Boa</button>
+<button class="ruim" onclick="votar('ff',1)">⭐ Ruim</button>
+<div class="estrelas" id="ff-media">⭐ 0</div>
+<input type="hidden" id="ff-total" value="0">
+<input type="hidden" id="ff-votos" value="0">
+<textarea id="ff-texto" placeholder="Escreva seu comentário..."></textarea><br>
+<select id="ff-tipo">
+<option value="positivo">👍 Positivo</option>
+<option value="negativo">👎 Negativo</option>
+</select>
+<button onclick="comentar('ff')">Enviar</button>
+<div class="comentarios" id="ff-comentarios"></div>
+</div>
+
+<!-- League of Legends -->
+<div class="game">
+<h2>League of Legends</h2>
+<img src="https://gaming-cdn.com/images/products/9456/616x353/league-of-legends-pc-jogo-cover.jpg?v=1747212286">
+<button class="espetacular" onclick="votar('lol',5)">⭐⭐⭐⭐⭐ Espetacular</button>
+<button class="boa" onclick="votar('lol',3)">⭐⭐⭐ Boa</button>
+<button class="ruim" onclick="votar('lol',1)">⭐ Ruim</button>
+<div class="estrelas" id="lol-media">⭐ 0</div>
+<input type="hidden" id="lol-total" value="0">
+<input type="hidden" id="lol-votos" value="0">
+<textarea id="lol-texto" placeholder="Escreva seu comentário..."></textarea><br>
+<select id="lol-tipo">
+<option value="positivo">👍 Positivo</option>
+<option value="negativo">👎 Negativo</option>
+</select>
+<button onclick="comentar('lol')">Enviar</button>
+<div class="comentarios" id="lol-comentarios"></div>
+</div>
+
+<!-- The Last of Us -->
+<div class="game">
+<h2>The Last of Us</h2>
+<img src="https://image.api.playstation.com/vulcan/ap/rnd/202206/0719/qGwL3rtAQRffx4dLtRhnr1GW.png">
+<button class="espetacular" onclick="votar('tlou',5)">⭐⭐⭐⭐⭐ Espetacular</button>
+<button class="boa" onclick="votar('tlou',3)">⭐⭐⭐ Boa</button>
+<button class="ruim" onclick="votar('tlou',1)">⭐ Ruim</button>
+<div class="estrelas" id="tlou-media">⭐ 0</div>
+<input type="hidden" id="tlou-total" value="0">
+<input type="hidden" id="tlou-votos" value="0">
+<textarea id="tlou-texto" placeholder="Escreva seu comentário..."></textarea><br>
+<select id="tlou-tipo">
+<option value="positivo">👍 Positivo</option>
+<option value="negativo">👎 Negativo</option>
+</select>
+<button onclick="comentar('tlou')">Enviar</button>
+<div class="comentarios" id="tlou-comentarios"></div>
+</div>
+
+<!-- Minecraft -->
+
+
+
+<div class="game">
+<h2>Minecraft</h2>
+
+<a href="minecraft.html">
+    <img src="https://sm.ign.com/ign_br/screenshot/default/tmp-cgtjz0-bb7faa1483782db2-minecraft-horizontal-key-art_n1te.jpg">
+</a>
+
+
+<button class="espetacular" onclick="votar('mc',5)">⭐⭐⭐⭐⭐ Espetacular</button>
+<button class="boa" onclick="votar('mc',3)">⭐⭐⭐ Boa</button>
+<button class="ruim" onclick="votar('mc',1)">⭐ Ruim</button>
+<div class="estrelas" id="mc-media">⭐ 0</div>
+<input type="hidden" id="mc-total" value="0">
+<input type="hidden" id="mc-votos" value="0">
+<textarea id="mc-texto" placeholder="Escreva seu comentário..."></textarea><br>
+<select id="mc-tipo">
+<option value="positivo">👍 Positivo</option>
+<option value="negativo">👎 Negativo</option>
+</select>
+<button onclick="comentar('mc')">Enviar</button>
+<div class="comentarios" id="mc-comentarios"></div>
+</div>
+
+<!-- Crash Bandicoot -->
+<div class="game">
+<h2>Crash Bandicoot</h2>
+<img src="https://upload.wikimedia.org/wikipedia/en/4/44/Crash_Bandicoot_Cover.png">
+<button class="espetacular" onclick="votar('crash',5)">⭐⭐⭐⭐⭐ Espetacular</button>
+<button class="boa" onclick="votar('crash',3)">⭐⭐⭐ Boa</button>
+<button class="ruim" onclick="votar('crash',1)">⭐ Ruim</button>
+<div class="estrelas" id="crash-media">⭐ 0</div>
+<input type="hidden" id="crash-total" value="0">
+<input type="hidden" id="crash-votos" value="0">
+<textarea id="crash-texto" placeholder="Escreva seu comentário..."></textarea><br>
+<select id="crash-tipo">
+<option value="positivo">👍 Positivo</option>
+<option value="negativo">👎 Negativo</option>
+</select>
+<button onclick="comentar('crash')">Enviar</button>
+<div class="comentarios" id="crash-comentarios"></div>
+</div>
+
+<!-- Clash Royale -->
+<div class="game">
+<h2>Clash Royale</h2>
+<img src="https://yt3.googleusercontent.com/Pj9SLzbMxgdbgFSA5MgfTZXjnoRtAj5qUGP8ubjf8AEJpy2nzWLR9Ik__iwQa44bPdvNw5jv5A=s900-c-k-c0x00ffffff-no-rj">
+<button class="espetacular" onclick="votar('cr',5)">⭐⭐⭐⭐⭐ Espetacular</button>
+<button class="boa" onclick="votar('cr',3)">⭐⭐⭐ Boa</button>
+<button class="ruim" onclick="votar('cr',1)">⭐ Ruim</button>
+<div class="estrelas" id="cr-media">⭐ 0</div>
+<input type="hidden" id="cr-total" value="0">
+<input type="hidden" id="cr-votos" value="0">
+<textarea id="cr-texto" placeholder="Escreva seu comentário..."></textarea><br>
+<select id="cr-tipo">
+<option value="positivo">👍 Positivo</option>
+<option value="negativo">👎 Negativo</option>
+</select>
+<button onclick="comentar('cr')">Enviar</button>
+<div class="comentarios" id="cr-comentarios"></div>
+</div>
+
+<!-- Among Us -->
+<div class="game">
+
+<h2>Among Us</h2>
+
+<a href="amongus.html">
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Among_Us_cover_art.jpg">
+</a>
+
+<button class="espetacular" onclick="votar('au',5)">⭐⭐⭐⭐⭐ Espetacular</button>
+<button class="boa" onclick="votar('au',3)">⭐⭐⭐ Boa</button>
+<button class="ruim" onclick="votar('au',1)">⭐ Ruim</button>
+<div class="estrelas" id="au-media">⭐ 0</div>
+<input type="hidden" id="au-total" value="0">
+<input type="hidden" id="au-votos" value="0">
+<textarea id="au-texto" placeholder="Escreva seu comentário..."></textarea><br>
+<select id="au-tipo">
+<option value="positivo">👍 Positivo</option>
+<option value="negativo">👎 Negativo</option>
+</select>
+<button onclick="comentar('au')">Enviar</button>
+<div class="comentarios" id="au-comentarios"></div>
+</div>
+
+
+
+</div>
+
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Review Pro</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f0f0f;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    color: #9b59ff;
+    text-shadow: 0 0 15px #9b59ff;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game {
+    background-color: #1a1a1a;
+    padding: 20px;
+    margin: 20px;
+    width: 320px;
+    border-radius: 15px;
+    border: 2px solid #9b59ff;
+    box-shadow: 0 0 20px #9b59ff33;
+    transition: 0.3s;
+}
+
+.game:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #9b59ff;
+}
+
+/* 🔥 IMAGENS TODAS DO MESMO TAMANHO */
+.game img {
+    width: 100%;
+    height: 350px;      /* altura fixa igual para todas */
+    object-fit: cover;  /* mantém proporção sem deformar */
+    border-radius: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.espetacular { background-color: #00ff88; color: black; }
+.boa { background-color: #3498db; }
+.ruim { background-color: #ff4444; }
+
+textarea {
+    width: 90%;
+    height: 60px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+}
+
+.comentarios {
+    margin-top: 10px;
+    text-align: left;
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.comentario-positivo { color: #00ff88; }
+.comentario-negativo { color: #ff4444; }
+
+.estrelas {
+    font-size: 20px;
+    color: gold;
+}
+</style>
+
+<script>
+function votar(jogo, valor) {
+    let total = parseInt(document.getElementById(jogo + "-total").value);
+    let votos = parseInt(document.getElementById(jogo + "-votos").value);
+
+    total += valor;
+    votos += 1;
+
+    document.getElementById(jogo + "-total").value = total;
+    document.getElementById(jogo + "-votos").value = votos;
+
+    let media = (total / votos).toFixed(1);
+    document.getElementById(jogo + "-media").innerText = "⭐ " + media;
+}
+
+function comentar(jogo) {
+    let texto = document.getElementById(jogo + "-texto").value;
+    let tipo = document.getElementById(jogo + "-tipo").value;
+    let area = document.getElementById(jogo + "-comentarios");
+
+    if (texto.trim() === "") return;
+
+    let p = document.createElement("p");
+
+    if (tipo === "positivo") {
+        p.classList.add("comentario-positivo");
+        p.innerText = "👍 " + texto;
+    } else {
+        p.classList.add("comentario-negativo");
+        p.innerText = "👎 " + texto;
+    }
+
+    area.appendChild(p);
+    document.getElementById(jogo + "-texto").value = "";
+}
+</script>
+
+</head>
+<body>
+
+<h1>🎮 GAME REVIEW PRO 🎮</h1>
+
+<div class="container">
+
+<!-- AQUI CONTINUA TODO SEU CÓDIGO DOS 8 JOGOS EXATAMENTE IGUAL -->
+<!-- Não alterei nada além do tamanho das imagens -->
+
+</div>
+
+<title>Mayron Rech, Kenai Palombo, Rafferty Guante, Lucas Rafael</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f0f0f;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    color: #9b59ff;
+    text-shadow: 0 0 15px #9b59ff;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game {
+    background-color: #1a1a1a;
+    padding: 20px;
+    margin: 20px;
+    width: 320px;
+    border-radius: 15px;
+    border: 2px solid #9b59ff;
+    box-shadow: 0 0 20px #9b59ff33;
+    transition: 0.3s;
+}
+
+.game:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #9b59ff;
+}
+
+/* IMAGENS PADRONIZADAS */
+.game img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.espetacular { background-color: #00ff88; color: black; }
+.boa { background-color: #3498db; }
+.ruim { background-color: #ff4444; }
+
+textarea {
+    width: 90%;
+    height: 60px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+}
+
+.comentarios {
+    margin-top: 10px;
+    text-align: left;
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.comentario-positivo { color: #00ff88; }
+.comentario-negativo { color: #ff4444; }
+
+.estrelas {
+    font-size: 20px;
+    color: gold;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-top: 2px solid #9b59ff;
+    color: #9b59ff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #9b59ff;
+}
+</style>
+
+<script>
+function votar(jogo, valor) {
+    let total = parseInt(document.getElementById(jogo + "-total").value);
+    let votos = parseInt(document.getElementById(jogo + "-votos").value);
+
+    total += valor;
+    votos += 1;
+
+    document.getElementById(jogo + "-total").value = total;
+    document.getElementById(jogo + "-votos").value = votos;
+
+    let media = (total / votos).toFixed(1);
+    document.getElementById(jogo + "-media").innerText = "⭐ " + media;
+}
+
+function comentar(jogo) {
+    let texto = document.getElementById(jogo + "-texto").value;
+    let tipo = document.getElementById(jogo + "-tipo").value;
+    let area = document.getElementById(jogo + "-comentarios");
+
+    if (texto.trim() === "") return;
+
+    let p = document.createElement("p");
+
+    if (tipo === "positivo") {
+        p.classList.add("comentario-positivo");
+        p.innerText = "👍 " + texto;
+    } else {
+        p.classList.add("comentario-negativo");
+        p.innerText = "👎 " + texto;
+    }
+
+    area.appendChild(p);
+    document.getElementById(jogo + "-texto").value = "";
+}
+</script>
+
+<style>
+    .agradecimento {
+        text-align: center;
+        margin-top: 35px;
+        padding: 25px;
+        background-color: #1a1a1a;
+        border-top: 2px solid #9b59ff;
+        color: #9b59ff;
+        font-size: 23px;
+        line-height: 1.6;
+    }
+    
+    .agradecimento .cadastre-se,
+    .agradecimento .cadastre-se:link,
+    .agradecimento .cadastre-se:visited,
+    .agradecimento .cadastre-se:hover,
+    .agradecimento .cadastre-se:active {
+        color: cyan !important;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .agradecimento .cadastre-se:hover {
+        text-decoration: underline;
+        text-shadow: 0 0 8px cyan;
+    }
+    </style>
+    
+    <footer class="agradecimento">
+       Sabia que os  <a href="jogos.html" class="cadastre-se">jogos</a> revolucionaram a indústria como um todo?<br><br>
+        Eles se diferenciaram tanto de tudo que havia sido criado até então, que até hoje eles estão no topo do mercado econômico.
+     
+    </footer>
+    
+    
+    
+    
+
+</head>
+<body>
+
+<h1>🎮 Mayron Rech • Kenai Palombo • Rafferty Guante • Lucas Rafael 🎮</h1>
+
+<div class="container">
+
+<!-- 🔥 AQUI FICA TODO O CÓDIGO DOS 8 JOGOS QUE VOCÊ JÁ TEM -->
+<!-- (Dying Light, Free Fire, LoL, The Last of Us, Minecraft, Crash, Clash Royale, Among Us) -->
+
+</div>
+
+<footer>
+Projeto desenvolvido por: <br>
+Mayron Rech • Kenai Palombo • Rafferty Guante • Lucas Rafael
+</footer>
+
+
+<div style="margin:25px;">
+    <a href="formulario.html">
+        <button class="espetacular">
+            Faça sua compra aqui!
+        </button>
+    </a>
+</div>
+
+
+
+</body>
+</html>
